@@ -285,6 +285,12 @@ df.reset_index(inplace=True, drop=True)
 df.info() # 52757
 
 
+# In[ ]:
+
+
+### There are some categorys with wrong merchants (simple_description column). Example: rockymoutnain kung fu is a sprots or something like that
+
+
 # In[26]:
 
 
@@ -575,6 +581,12 @@ plt.tight_layout()
 
 
 df1.info()
+
+
+# In[50]:
+
+
+df.info()
 
 
 # In[ ]:
