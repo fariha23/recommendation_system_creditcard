@@ -34,14 +34,6 @@ def takeInputMerch(catid, df_cat,top_list):
     else: merchant_user_visited = merchant_user_visited
     return merchant_user_visited
     
-def takeInputUser(df_cat): 
-    user_list=df_cat.uid
-    userid = input(user_list)
-    if userid=='':
-        userid='Test'
-    else: userid=userid
-    return userid
-
 def filter1_count_per_merch(df_cat):
     return df_cat.groupby(['merchant'])['merchant'].count()
 
@@ -63,7 +55,7 @@ def filters(currentCatId,df,top_merch_list):
 
     merchant_user_visited=takeInputMerch(currentCatId,df,top_merch_list)
     
-    userid=takeInputUser(df)
+  
      
     #1 (filter #1) Num of Records per merchant in top 15.
     count_per_merch=filter1_count_per_merch(df)
@@ -72,7 +64,7 @@ def filters(currentCatId,df,top_merch_list):
     #2 (filter #2) Mean amount of $ spent per merchant in top 15.
     meanamt_per_merch=filter2_meanamt_per_merch(df)
     #meanamt_per_merch
-    return userid, merchant_user_visited,count_per_merch, meanamt_per_merch
+    return merchant_user_visited,count_per_merch, meanamt_per_merch
     
 def sparseMtx(df,merchant_user_visited):
     
@@ -92,20 +84,16 @@ def sparseMtx(df,merchant_user_visited):
     return df1_rec_merch_count_mtx, merchant_popularity_count
 
 
-def recommendationSystem(userid,merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,filter1,filter2, Threshold_C, Threshold_P,\
+def recommendationSystem(merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,filter1,filter2, Threshold_C, Threshold_P,\
                          Threshold_Num_MeanAmt, Threshold_Num_Visit,top_merch_list):
-    if df_mtx.get(userid)==None:
-        userid=0 #FB/9/14/20: Figured I dont need user_merchant_visits after all. If userid is not in df_mtx, i can just assign 0 to it in this function.
-        
-		#User is not active in category therefore uid is not found in the data frame. 
-        #   user_merchant_visits=0
-        #else: user_merchant_visits=df_mtx.loc[userid][merchant_user_visited] #user is active in this category
+        #FB9/14/2020 - No need for userid at all. Taking all references to userid out.
     
     if SimMethod=='Pearson':
         Threshold_Sim=Threshold_P
         similar_to_merchant = df_mtx.corrwith(merchant_popularity_count)
         #create dataframe using series "similar_to_merchant"
         similar_to_merchant = pd.DataFrame(similar_to_merchant, columns=[SimMethod])
+        
         
     if SimMethod=='Cosine':
         Threshold_Sim=Threshold_P
@@ -114,6 +102,7 @@ def recommendationSystem(userid,merchant_user_visited,SimMethod,df_mtx,merchant_
         similar_to_merchant_cosine = temp_df[merchant_user_visited]
         similar_to_merchant=pd.DataFrame(similar_to_merchant_cosine)
         similar_to_merchant.columns=[SimMethod]
+        
 
   
     
@@ -129,4 +118,4 @@ def recommendationSystem(userid,merchant_user_visited,SimMethod,df_mtx,merchant_
                                                      (merchant_corr_summary.Num_Times_Merch_Was_Visited > Threshold_Num_Visit)\
                                                      & (merchant_corr_summary.index!= merchant_user_visited) &\
                                                      (merchant_corr_summary.Mean_Amt_Per_Merch > Threshold_Num_MeanAmt)].sort_values(SimMethod, ascending=False).head(3)
-    print("Folks like you, are enjoying {}".format(final_recommendation.index.tolist()))
+    print("Other merchants you may like {}".format(final_recommendation.index.tolist()))
