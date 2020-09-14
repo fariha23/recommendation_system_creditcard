@@ -38,9 +38,7 @@ def takeInputUser(df_cat):
     user_list=df_cat.uid
     userid = input(user_list)
     if userid=='':
-	     
         userid='Test'
-		
     else: userid=userid
     return userid
 
@@ -95,10 +93,13 @@ def sparseMtx(df,merchant_user_visited):
 
 
 def recommendationSystem(userid,merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,filter1,filter2, Threshold_C, Threshold_P,\
-						Threshold_Num_MeanAmt, Threshold_Num_Visit,top_merch_list):
-    if df_mtx.get(userid)==None: #User is not active in category therefore uid is not found in the data frame. 
-        user_merchant_visits=0
-    else: user_merchant_visits=df_mtx.loc[userid][merchant_user_visited] #user is active in category but has not visited this specific merchant yet
+                         Threshold_Num_MeanAmt, Threshold_Num_Visit,top_merch_list):
+    if df_mtx.get(userid)==None:
+        userid=0 #FB/9/14/20: Figured I dont need user_merchant_visits after all. If userid is not in df_mtx, i can just assign 0 to it in this function.
+        
+		#User is not active in category therefore uid is not found in the data frame. 
+        #   user_merchant_visits=0
+        #else: user_merchant_visits=df_mtx.loc[userid][merchant_user_visited] #user is active in this category
     
     if SimMethod=='Pearson':
         Threshold_Sim=Threshold_P
@@ -120,17 +121,12 @@ def recommendationSystem(userid,merchant_user_visited,SimMethod,df_mtx,merchant_
     merchant_corr_summary = similar_to_merchant.join(filter1).join(filter2)
     merchant_corr_summary.rename(columns={"merchant": "Num_Times_Merch_Was_Visited",'amountnum':'Mean_Amt_Per_Merch'}, inplace=True)
     merchant_corr_summary.sort_values('Num_Times_Merch_Was_Visited',ascending=False)
-	
-        
+
     #print(pd.DataFrame(merchant_corr_summary))
-    #9/12/2020-Added abs() to the correlation number below as Pearson correlation's strength is strong if number is high -ve or high +ve    
-    if 0 <= user_merchant_visits < 10:
-        final_recommendation = merchant_corr_summary[(abs(merchant_corr_summary[SimMethod]) >= Threshold_Sim) &\
+    #FB/9/12/2020-Added abs() to the correlation number below as Pearson correlation's strength is strong if number is high -ve or high +ve    
+    #if 0 <= user_merchant_visits < 1000:
+    final_recommendation = merchant_corr_summary[(abs(merchant_corr_summary[SimMethod]) >= Threshold_Sim) &\
                                                      (merchant_corr_summary.Num_Times_Merch_Was_Visited > Threshold_Num_Visit)\
                                                      & (merchant_corr_summary.index!= merchant_user_visited) &\
                                                      (merchant_corr_summary.Mean_Amt_Per_Merch > Threshold_Num_MeanAmt)].sort_values(SimMethod, ascending=False).head(3)
-        print("Folks like you, are enjoying {}".format(final_recommendation.index.tolist()))
-		
-    else: 
-        final_recommendation=np.nan
-        #print(final_recommendation)
+    print("Folks like you, are enjoying {}".format(final_recommendation.index.tolist()))
