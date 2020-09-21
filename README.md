@@ -1,57 +1,45 @@
 Recommendation_System_CreditCard
 ==============================
 
-Create recomm system based on cc transactional data of several users
+Create recommendation system based on credit card transactional data.
 
 Project Organization
 ------------
 
     ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
+    ├── notebooks          <- Jupyter notebooks.
     │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+    ├── reports            <- Generated analysis in PDF
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+    │                         generated with `pip freeze > requirements.txt
 
 
 --------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+Goals:
+
+Create recommendation system(s) using credit card transactional records. The data contains transactions from multiple users and contains GPS coordinates. 
+The goals of the recommendation system(s) are as follows:
+
+Goal #1.The recommendation system should recommend similar merchants to the customer based on similarities between the merchants
+Goal #2.The recommendation system should recommend merchants to the customer based on their current location. 
+
+Notebooks:
+
+Along with EDA.ipyb and pre-work for goal #2 notebooks(Recommendation_System_Location_Based_Pre_Work.ipynb) following notebooks capture the code for two goals. 
+----A notebook titled "Recommendation_System_v1.ipynb" captures code for goal #1. 
+----A notebook titled "Recommendation_System_Location_Based_HDBSCAN.ipynb" captures code for goal #2.
+(Note: A notebook titled "Recommendation_System_Location_Based_Kmeans.ipynb" captures code for goal #2 however it is only for learning purpose)
+
+--Documentation:
+----Documentation on the project (project presentation, milestone reports etc) are provided in folder 'reports'. 
+This folder also contains figures used to create the reports. 
+
+----Documentation on the code can be found under notebooks folder titled "Documentation_Recommendation_System_v1" and "Documentation_Recommendation_System_Location_Based"
+
+ 
