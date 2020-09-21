@@ -27,6 +27,7 @@ Create recommendation system(s) using credit card transactional records. The dat
 The goals of the recommendation system(s) are as follows:
 
 Goal #1.The recommendation system should recommend similar merchants to the customer based on similarities between the merchants
+
 Goal #2.The recommendation system should recommend merchants to the customer based on their current location. 
 
 Notebooks:
