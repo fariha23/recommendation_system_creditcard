@@ -1,4 +1,4 @@
-Recommendation_System_CreditCard
+﻿Recommendation_System_Using_CreditCard_Transactional_Data
 ==============================
 
 Create recommendation system based on credit card transactional data.
@@ -32,15 +32,18 @@ Goal #2.The recommendation system should recommend merchants to the customer bas
 
 Notebooks:
 
-Along with EDA.ipyb and pre-work for goal #2 notebooks(Recommendation_System_Location_Based_Pre_Work.ipynb) following notebooks capture the code for two goals. 
+Along with EDA.ipyb and pre-work for goal #2 notebooks (Recommendation_System_Location_Based_Pre_Work.ipynb) following notebooks capture the code for two goals. 
 ----A notebook titled "Recommendation_System_v1.ipynb" captures code for goal #1. 
 ----A notebook titled "Recommendation_System_Location_Based_HDBSCAN.ipynb" captures code for goal #2.
 (Note: A notebook titled "Recommendation_System_Location_Based_Kmeans.ipynb" captures code for goal #2 however it is only for learning purpose)
 
---Documentation:
-----Documentation on the project (project presentation, milestone reports etc) are provided in folder 'reports'. 
-This folder also contains figures used to create the reports. 
+Notebooks -- > Documentation:
+Documentation on the code can be found under the notebooks folder and they are titled as "Documentation_Recommendation_System_v1" and "Documentation_Recommendation_System_Location_Based
 
-----Documentation on the code can be found under notebooks folder titled "Documentation_Recommendation_System_v1" and "Documentation_Recommendation_System_Location_Based"
+
+
+
+Reports:
+Documentation on the project (project presentation, milestone reports etc.) are provided in reports folder. This folder also contains figures used to create the reports. 
 
  
