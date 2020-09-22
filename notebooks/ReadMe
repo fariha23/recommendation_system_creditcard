@@ -1,4 +1,4 @@
-**This folder contains ipynbs, python code and helper code used with the notebooks to accomplish the goals of this project**
+This folder contains ipynbs, python code and helper code used with the notebooks to accomplish the goals of this project
 
 Exploratory Data Analysis(EDA) files:
   Files EDA.ipyb, EDA.py are same. EDA.py is used to import it's code to other files in order to limit the repeatabiliy 
