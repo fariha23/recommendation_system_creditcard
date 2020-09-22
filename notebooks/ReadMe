@@ -2,7 +2,7 @@ This folder contains ipynbs, python code and helper code used with the notebooks
 
 Exploratory Data Analysis(EDA) files:
   Files EDA.ipyb, EDA.py are same. EDA.py is used to import it's code to other files in order to limit the repeatabiliy 
-  The file eda_helper.py contains all the functions used in EDA.ipynb. The documentation on these functions can be found in <>
+  The file eda_helper.py contains all the functions used in EDA.ipynb. The documentation on these functions can be found in EDA/Readme.txt
 
 Recommendation_System_v1 files:
     Files Recommendation_System_v1.ipynb and Recommendation_System_v1.py are exactly the same. Recommendation_System_v1.py is used to import code (dataframes) to other files 
