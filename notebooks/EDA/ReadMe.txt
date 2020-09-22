@@ -1,4 +1,4 @@
-This folder contains EDA on the data provided. 
+This folder contains EDA on the data provided.
 Here are the function descriptions in eda_helper.py files. 
 
 #EDA helper functions
