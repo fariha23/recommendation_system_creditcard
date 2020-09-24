@@ -1,6 +1,6 @@
 This folder contains code for recommendation_system_location_based (pre-work, HDBSCAN sol and KMeans (experiment)
 
-Here are the functions descriptions in recomm_loc_based_helper.py files. 
+Here are the function descriptions in recomm_loc_based_helper.py file. 
 
 #recomm_loc_based_helper.py
 

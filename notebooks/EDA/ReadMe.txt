@@ -1,5 +1,5 @@
 This folder contains EDA on the data provided.
-Here are the function descriptions in eda_helper.py files. 
+Here are the function descriptions of eda_helper.py files. 
 
 #EDA helper functions
 
@@ -13,8 +13,7 @@ Here are the function descriptions in eda_helper.py files.
    Output: data frame with dropped rows that have values matched to kw_list in the column
  
 3. Function Name: catPerMonthGraph2(month,df,ax)
-   Inputs: Month for which categories' distributions need to be observed,
-		  data frame, axis from the plt.subplots() method
+   Inputs: Month for which categories' distributions need to be observed, data frame, axis from the plt.subplots() method
    Output: Graph showing categories distributions in the month specified
    
  

@@ -1,5 +1,5 @@
 This folder contains code for Recommendation_System_v1 (recommendation based on merchant similarities)
-Here are the functions descriptions in recomm_sys_v1.py files. 
+Here are the function descriptions of recomm_sys_v1_helper.py file. 
 
 #recomm_sys_v1 helper functions
 
