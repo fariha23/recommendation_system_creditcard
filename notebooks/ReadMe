@@ -1,23 +1,23 @@
-This folder contains ipynbs, python code and helper code used with the notebooks to accomplish the goals of this project
+This folder contains python notebooks and python helper code used to accomplish the goals of this project
 
 Exploratory Data Analysis(EDA) files:
-  Contains: Files EDA.ipyb, eda_helper.py 
-  The file eda_helper.py contains all the functions used in EDA.ipynb. The documentation on these functions can be found in EDA/ReadMe.txt
 
-  Details: The notebook contains exploratory data analysis on the credit card transactional data provided by FinGoal. The data is not shared with public as it is proprietary.
+	Contains: Files EDA.ipyb, eda_helper.py 
+	The file eda_helper.py contains all the functions used in EDA.ipynb. The documentation on these functions can be found in EDA/ReadMe.txt
+
+	Details: The notebook contains exploratory data analysis on the credit card transactional data provided by FinGoal. The data is not shared with public as it is proprietary.
              
 Recommendation_System_v1 files:
-    Contains: Files Recommendation_System_v1.ipynb and recomm_sys_v1_helper.py 
-    The file recomm_sys_v1_helper.py contains all the functions used in Files Recommendation_System_v1.ipynb. The documentation on these functions can be found in Recommendation_System_v1/ReadMe.txt
+
+	Contains: Files Recommendation_System_v1.ipynb and recomm_sys_v1_helper.py 
+	The file recomm_sys_v1_helper.py contains all the functions used in Files Recommendation_System_v1.ipynb. The documentation on these functions can be found in Recommendation_System_v1/ReadMe.txt
 	
-	Details: The notebook contains code for recommendation engine code using collaborative filtering and finding similarities between the merchants using Cosine Similarity Score and 
-	Pearson Correlation Score
+	Details: The notebook contains code for recommendation engine code using collaborative filtering and finding similarities between the merchants using Cosine Similarity Score and Pearson Correlation Score
  
 Recommendation_System_Location_Based files:
-    Contains: Recommendation_System_Location_Based_Pre_Work.py, recomm_loc_based_helper.py, Recommendation_System_Location_Based_HDBSCAN.ipynb, and Recommendation_System_Location_Based_KMeans.ipynb
-	          The file recomm_loc_based_helper.py contains functions used in all three notebooks in this folder. The documentation on these functions can be found in Recommendation_System_Location_Based/ReadMe.txt
+
+	Contains: Recommendation_System_Location_Based_Pre_Work.py, recomm_loc_based_helper.py, Recommendation_System_Location_Based_HDBSCAN.ipynb, and Recommendation_System_Location_Based_KMeans.ipynb
+	The file recomm_loc_based_helper.py contains functions used in all three notebooks in this folder. The documentation on these functions can be found in Recommendation_System_Location_Based/ReadMe.txt
 	
-	
-    Details: File titled Recommendation_System_Location_Based_HDBSCAN.ipynb contains recommendation engine code using Hierarchical Density Based Spatial Clustering Algorithm with Noise (HDBSCAN) 
-    clustering algorithm. 
+	Details: File titled Recommendation_System_Location_Based_HDBSCAN.ipynb contains recommendation engine code using Hierarchical Density Based Spatial Clustering Algorithm with Noise (HDBSCAN) clustering algorithm. 
     File titled Recommendation_System_Location_Based_KMeans.ipynb contains recommendation engine code using KMeans clustering algorithm. 
