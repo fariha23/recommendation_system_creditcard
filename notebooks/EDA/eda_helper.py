@@ -24,6 +24,7 @@ def createExcel(filename, dataframe):
     dataframe.to_excel(writer, encoding='utf8', index=False)
     
     writer.save()
+	
 def rows_to_del_with_index(df,rowstodel):
     df.drop(rowstodel, inplace=True)
 
