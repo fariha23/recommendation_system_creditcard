@@ -1,10 +1,10 @@
 ﻿Recommendation_System_Using_CreditCard_Transactional_Data
-==============================
+==========================================================
 
 Create recommendation system based on credit card transactional data.
 
 Project Organization
-------------
+--------------------
 
     ├── LICENSE
     ├── README.md          <- The top-level README for developers using this project.
@@ -21,6 +21,7 @@ Project Organization
 --------
 
 Goals:
+-------
 
 Create recommendation system(s) using credit card transactional records. The data contains transactions from multiple users and contains GPS coordinates. 
 The goals of the recommendation system(s) are as follows:
@@ -29,7 +30,10 @@ Goal #1.The recommendation system should recommend similar merchants to the cust
 
 Goal #2.The recommendation system should recommend merchants to the customer based on their current location. 
 
+
 Notebooks:
+----------
+
 
 Along with EDA.ipyb and pre-work for goal #2 notebooks (Recommendation_System_Location_Based_Pre_Work.ipynb) following notebooks capture the code for the two goals.
 
@@ -37,12 +41,11 @@ Along with EDA.ipyb and pre-work for goal #2 notebooks (Recommendation_System_Lo
  
 ----A notebook titled "Recommendation_System_Location_Based_HDBSCAN.ipynb" captures code for goal #2.
 
-
-
 (Note: A notebook titled "Recommendation_System_Location_Based_Kmeans.ipynb" captures code for goal #2 however it is only for learning purposes)
 
 
 Reports:
+--------
 
 Documentation on the project (project presentation, milestone reports etc.) are provided in reports folder. This folder also contains figures used to create the reports. 
 
