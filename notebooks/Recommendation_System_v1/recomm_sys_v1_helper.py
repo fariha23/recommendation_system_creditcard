@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 #from eda_helper import rows_to_del_with_index
 from sklearn.metrics.pairwise import cosine_similarity
+pd.options.display.float_format = '{:,.2f}'.format
 #Thresholds are in main ipynb for easy of use
 
 #functions for recommendation_system_v1.ipynb
@@ -59,10 +60,14 @@ def filters(currentCatId,df,top_merch_list):
     
 ##############################################################################################################################
 
-def recommendationSystem(merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,count_per_merch, meanamt_per_merch,Threshold_Sim_Score,\
+    
+##############################################################################################################################
+
+def recommendationSystem_A(merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,count_per_merch, meanamt_per_merch,Threshold_Sim_Score,\
                          Threshold_Num_MeanAmt, Threshold_Num_Visit,top_merch_list):
     
     if SimMethod=='Pearson':
+        
         similar_to_merchant = df_mtx.corrwith(merchant_popularity_count)
         #create data frame using series "similar_to_merchant"
         similar_to_merchant = pd.DataFrame(similar_to_merchant, columns=[SimMethod])
@@ -70,8 +75,10 @@ def recommendationSystem(merchant_user_visited,SimMethod,df_mtx,merchant_popular
         
     if SimMethod=='Cosine':
         
+        
         temp=cosine_similarity(df_mtx.T)
         temp_df=pd.DataFrame(temp, columns=top_merch_list, index=top_merch_list)
+        
         similar_to_merchant= temp_df[merchant_user_visited]
         similar_to_merchant=pd.DataFrame(similar_to_merchant)
         similar_to_merchant.columns=[SimMethod]
@@ -84,7 +91,6 @@ def recommendationSystem(merchant_user_visited,SimMethod,df_mtx,merchant_popular
     merchant_corr_summary.rename(columns={"merchant": "Num_Times_Merch_Was_Visited",'amountnum':'Mean_Amt_Per_Merch'}, inplace=True)
     #merchant_corr_summary.sort_values('Num_Times_Merch_Was_Visited',ascending=False)
 
-   
     final_recommendation = merchant_corr_summary[(abs(merchant_corr_summary[SimMethod]) >= Threshold_Sim_Score) &\
                                                      (merchant_corr_summary.Num_Times_Merch_Was_Visited > Threshold_Num_Visit)\
                                                      & (merchant_corr_summary.index!= merchant_user_visited) &\
@@ -93,7 +99,7 @@ def recommendationSystem(merchant_user_visited,SimMethod,df_mtx,merchant_popular
     
 ##############################################################################################################################
 
-def recommendationSystem_CosineAndPearson(merchant_user_visited,df_mtx,merchant_popularity_count,count_per_merch,meanamt_per_merch,\
+def recommendationSystem_B(merchant_user_visited,df_mtx,merchant_popularity_count,count_per_merch,meanamt_per_merch,\
                                           Threshold_Sim_Score,Threshold_Num_MeanAmt,Threshold_Num_Visit,top_merch_list):
     #Calculate Pearson Score
 
@@ -154,4 +160,40 @@ def recommendationSystem_CosineAndPearson(merchant_user_visited,df_mtx,merchant_
 
     print("Other merchants you may like {}".format(final_recommendation.index.tolist()))
                                           
+##############################################################################################################################
+def recommendationSystem_C(merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,count_per_merch,\
+                                meanamt_per_merch,top_merch_list):
+    
+    if SimMethod=='':
+        SimMethod='pearson'
+    else: 
+        SimMethod==SimMethod
+    #################
+    
+    if SimMethod=='pearson':
+        
+        similar_to_merchant = df_mtx.corrwith(merchant_popularity_count)
+        similar_to_merchant = pd.DataFrame(similar_to_merchant, columns=[SimMethod])
+        
+        #print(similar_to_merchant)
+        
+    if SimMethod=='cosine':
+        
+        temp=cosine_similarity(df_mtx.T)
+       
+        temp_df=pd.DataFrame(temp, columns=top_merch_list, index=top_merch_list)
+        
+        similar_to_merchant= temp_df[merchant_user_visited]
+        similar_to_merchant=pd.DataFrame(similar_to_merchant)
+        similar_to_merchant.columns=[SimMethod]
+   
+    #final_recommendations
+    print("Merchant User Visited: " + merchant_user_visited + "\n")
+    print("\n"+ "For the Similarity Method of: " + SimMethod +"\n")
+    print("Top merchants are: ")
+    final_recommendation=similar_to_merchant[similar_to_merchant.index!= \
+                                                       merchant_user_visited].sort_values\
+                                                      (by=SimMethod,ascending=False).head(5).to_dict()[SimMethod]                                        
+    
+    return final_recommendation
 ##############################################################################################################################

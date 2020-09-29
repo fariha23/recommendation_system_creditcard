@@ -33,20 +33,32 @@ Here are the function descriptions of recomm_sys_v1_helper.py file.
             'count_per_merch': popularity (number of visits by users) of other similar merchants
 			'meanamt_per_merch: mean amount (dollars) spent by other users at the similar merchants
 			
-6. Function Name: recommendationSystem(merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,count_per_merch, meanamt_per_merch,Threshold_Sim_Score,\
+6. Function Name: recommendationSystem_A(merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,count_per_merch, meanamt_per_merch,Threshold_Sim_Score,\
                          Threshold_Num_MeanAmt, Threshold_Num_Visit,top_merch_list):
 	Input:   merchant_user_visited: The merchant we are comparing other merchants to
 	         SimMethod: 'Pearson' or 'Cosine'
-			 df_mtx: The sparse matrix created for similarity calculations between uid and merchants
-			 merchant_popularity_count: A series created showing visits of users to the merchant 'merchant_user_visited'
-			 count_per_merch: series returned by function 'filters'
-             meanamt_per_merch: series returned by function 'filters'
-			 Threshold_Sim_Score: Minimum similarity score at which two merchants are considered 'similar'. (0=too tolerant (accept all), 1: no tolerance(accept none))
-			 The value is set in the main script
-			 Threshold_Num_MeanAmt: Minimum mean amount of dollars spent on the merchants in the data frame to be considered for recommendations. The value is set in the main script
-			 Threshold_Num_Visit: Minimum number of visits (count of records) to the merchants in the data frame to be considered for recommendations. The value is set in the main
-			 top_merch_list: List of top merchants with which all similarities be calculated and recommendations are created. List returned from 'top_merch' function
-	Output: Based on either Cosine SimMethod or Pearson SimMethod, Top recommendations are returned
+	         df_mtx: The sparse matrix created for similarity calculations between uid and merchants
+	         merchant_popularity_count: A series created showing visits of users to the merchant 'merchant_user_visited'
+	         count_per_merch: series returned by function 'filters'
+                 meanamt_per_merch: series returned by function 'filters'
+		Threshold_Sim_Score: Minimum similarity score at which two merchants are considered 'similar'. (0=too tolerant (accept all), 1: no tolerance(accept none))
+		The value is set in the main script
+		Threshold_Num_MeanAmt: Minimum mean amount of dollars spent on the merchants in the data frame to be considered for recommendations. The value is set in the main script
+		Threshold_Num_Visit: Minimum number of visits (count of records) to the merchants in the data frame to be considered for recommendations. The value is set in the main
+		top_merch_list: List of top merchants with which all similarities be calculated and recommendations are created. List returned from 'top_merch' function
+	Output: Based on either Cosine SimMethod or Pearson SimMethod, Top recommendations are returned in the form of list
+
+7. Function Name: recommendationSystem_B(merchant_user_visited,df_mtx,merchant_popularity_count,count_per_merch,meanamt_per_merch,\
+                                           Threshold_Sim_Score,Threshold_Num_MeanAmt,Threshold_Num_Visit,top_merch_list)
+                 Inputs: See function recommendationSystem_A above for definitions of the input variables
+                 Outputs: recommendation based on combined logic between cosine and pearson in the form of list
+
+8. Function Name: recommendationSystem_C(merchant_user_visited,SimMethod,df_mtx,merchant_popularity_count,count_per_merch,\
+                                meanamt_per_merch,top_merch_list)
+		  Inputs: See function recommendationSystem_A above for definitions of the input variables
+                  Outputs: recommendation based on either pearson or cosine similarity scores. 
+                           The difference between recommendationsystem_A/B with C is that C only considered similarity scores for results and the results are 
+                           displayed as a dictionary with keys as top merchants and values as similarity scores
 	         
             
               
