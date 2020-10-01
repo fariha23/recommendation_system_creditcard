@@ -76,7 +76,11 @@ target/
 .ipynb_checkpoints/
 
 # exclude data from source control by default
-/data/
+/Data/
+
+#exclude following folders from source control
+notebooks/_Copies/
+notebooks/_Experiments_And_Other_Not_Used_NB/
 
 # Mac OS-specific storage files
 .DS_Store
